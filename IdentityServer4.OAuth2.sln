@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{9AE9C382-62C4-44E9-B639-0A0727F0184B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BE0A4F93-3A1E-4B4B-A22A-6E9743A49463}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IdentityServer4.OAuth2", "src\IdentityServer4.OAuth2\IdentityServer4.OAuth2.xproj", "{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5} = {9AE9C382-62C4-44E9-B639-0A0727F0184B}
+	EndGlobalSection
+EndGlobal
