@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IdentityServer4.OAuth2", "src\IdentityServer4.OAuth2\IdentityServer4.OAuth2.xproj", "{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "IdentityServer4.WebAPI", "src\IdentityServer4.WebAPI\IdentityServer4.WebAPI.xproj", "{97B4945E-3AA5-4517-9CD4-8291969E441A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,11 +24,16 @@ Global
 		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97B4945E-3AA5-4517-9CD4-8291969E441A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97B4945E-3AA5-4517-9CD4-8291969E441A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97B4945E-3AA5-4517-9CD4-8291969E441A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97B4945E-3AA5-4517-9CD4-8291969E441A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{917B0E9A-8DC7-45E5-81E2-4B9FD4C2A6C5} = {9AE9C382-62C4-44E9-B639-0A0727F0184B}
+		{97B4945E-3AA5-4517-9CD4-8291969E441A} = {9AE9C382-62C4-44E9-B639-0A0727F0184B}
 	EndGlobalSection
 EndGlobal
