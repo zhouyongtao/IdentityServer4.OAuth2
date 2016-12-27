@@ -30,23 +30,23 @@ namespace IdentityServer4.OAuth2
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            //services.AddMvc();
-
             //var connectionString = @"Data Source=.;Initial Catalog = IdentityServer4;Persist Security Info=True;User ID=sa;Password=123456";
             //var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
             //// configure identity server with in-memory users, but EF stores for clients and resources
             services.AddIdentityServer()
-                    .AddTemporarySigningCredential()
+                    .AddInMemoryClients(Clients.GetClients())
                     .AddTestUsers(Users.GetUsers())
                     .AddInMemoryApiResources(Resources.GetApiResources())
-                    .AddInMemoryClients(Clients.GetClients());
+                    .AddTemporarySigningCredential();
 
 
             //        .AddConfigurationStore(builder => builder.UseSqlServer(connectionString, options =>
             //                                          options.MigrationsAssembly(migrationsAssembly)))
             //        .AddOperationalStore(builder => builder.UseSqlServer(connectionString, options =>
             //                                         options.MigrationsAssembly(migrationsAssembly)));
+
+
+            services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,7 +54,6 @@ namespace IdentityServer4.OAuth2
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
-
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -64,17 +63,9 @@ namespace IdentityServer4.OAuth2
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            //app.UseStaticFiles();
             app.UseIdentityServer();
-            /*
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-            });
-            */
+            app.UseStaticFiles();
+            app.UseMvcWithDefaultRoute();
         }
     }
 }
