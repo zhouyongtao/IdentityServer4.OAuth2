@@ -7,28 +7,46 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Reflection;
+using Microsoft.EntityFrameworkCore;
+using IdentityServer4.OAuth2.Config;
 
 namespace IdentityServer4.OAuth2
 {
     public class Startup
     {
+        public IConfigurationRoot Configuration { get; }
+
         public Startup(IHostingEnvironment env)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
-                .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                .AddEnvironmentVariables();
+                          .SetBasePath(env.ContentRootPath)
+                          .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                          .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                          .AddEnvironmentVariables();
             Configuration = builder.Build();
         }
-
-        public IConfigurationRoot Configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Add framework services.
-            services.AddMvc();
+            //services.AddMvc();
+
+            //var connectionString = @"Data Source=.;Initial Catalog = IdentityServer4;Persist Security Info=True;User ID=sa;Password=123456";
+            //var migrationsAssembly = typeof(Startup).GetTypeInfo().Assembly.GetName().Name;
+            //// configure identity server with in-memory users, but EF stores for clients and resources
+            services.AddIdentityServer()
+                    .AddTemporarySigningCredential()
+                    .AddTestUsers(Users.GetUsers())
+                    .AddInMemoryApiResources(Resources.GetApiResources())
+                    .AddInMemoryClients(Clients.GetClients());
+
+
+            //        .AddConfigurationStore(builder => builder.UseSqlServer(connectionString, options =>
+            //                                          options.MigrationsAssembly(migrationsAssembly)))
+            //        .AddOperationalStore(builder => builder.UseSqlServer(connectionString, options =>
+            //                                         options.MigrationsAssembly(migrationsAssembly)));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,14 +65,16 @@ namespace IdentityServer4.OAuth2
                 app.UseExceptionHandler("/Home/Error");
             }
 
-            app.UseStaticFiles();
-
+            //app.UseStaticFiles();
+            app.UseIdentityServer();
+            /*
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            */
         }
     }
 }
