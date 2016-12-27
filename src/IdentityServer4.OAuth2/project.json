@@ -21,7 +21,12 @@
     "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "Microsoft.Extensions.Options.ConfigurationExtensions": "1.1.0",
     "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.1.0",
+
+    "Microsoft.EntityFrameworkCore": "1.1.0",
+    "Microsoft.EntityFrameworkCore.SqlServer": "1.1.0",
+
     "IdentityServer4": "1.0.0",
+    "IdentityServer4.EntityFramework": "1.0.0"
   },
   "tools": {
     "BundlerMinifier.Core": "2.0.238",
